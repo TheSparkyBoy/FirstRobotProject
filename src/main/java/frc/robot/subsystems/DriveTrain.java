@@ -17,9 +17,31 @@ public class DriveTrain extends SubsystemBase {
   private final TalonFX FrontLeft = new TalonFX(Constants.FrontLeftID);
   private final TalonFX BackLeft = new TalonFX(Constants.BackLeftID);
 
+  //constructor
   public DriveTrain() {
-
+    FrontRight.setInverted(false);
+    FrontLeft.setInverted(true);
+    BackRight.setInverted(false);
+    BackLeft.setInverted(true);
+    FrontLeft.configReverseSoftLimitEnable(false);
+    FrontLeft.configForwardSoftLimitEnable(false);
+    FrontRight.configReverseSoftLimitEnable(false);
+    FrontRight.configForwardSoftLimitEnable(false);
+    BackLeft.configReverseSoftLimitEnable(false);
+    BackLeft.configForwardSoftLimitEnable(false);
+    BackRight.configReverseSoftLimitEnable(false);
+    BackRight.configForwardSoftLimitEnable(false);
   }
+
+  //method
+    public void setRightSpeed(double speed){
+      FrontRight.set(ControlMode.PercentOutput, speed);
+      BackRight.set(ControlMode.PercentOutput, speed);
+    }
+
+    public void setLeftSpeed(double speed){
+      
+    }
 
   @Override
   public void periodic() {
